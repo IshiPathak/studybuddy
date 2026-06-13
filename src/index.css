@@ -46,3 +46,21 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
+.settings-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top:10px;
+  gap: 12px;
+  align-items: center;
+}
+.settings-btn {
+  margin-top: 20px;
+}
+.settings-page input {
+  width: 120px;
+  text-align: center;
+}
+.settings-page p {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
