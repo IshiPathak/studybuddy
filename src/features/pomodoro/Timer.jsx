@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import studyDone from "../../assets/studyDone.mp3"
 import breakDone from "../../assets/breakDone.mp3"
-
 import TimerControls from "./TimerControls"
 import CustomTimer from "./CustomTimer"
+import jumpingPet from "../../assets/jump.gif"
+import sleepingPet from "../../assets/sleep.gif"
+import eatingPet from "../../assets/eat.gif"
 
 function Timer() {
 
@@ -15,7 +17,7 @@ function Timer() {
   const [time, setTime] = useState(studyMinutes * 60)
   const [isRunning, setIsRunning] = useState(false)
   const [isBreak, setIsBreak] = useState(false)
-
+  const [isFinished, setIsFinished] = useState(false)
   const [sessionCount, setSessionCount] = useState(1)
   const [totalSessions, setTotalSessions] = useState(4)
 
@@ -40,6 +42,8 @@ function Timer() {
         if (sessionCount >= totalSessions) {
 
           setIsRunning(false)
+
+          setIsFinished(true)
 
           alert("All study sessions completed! 🎉")
 
@@ -97,6 +101,7 @@ function Timer() {
     setTime(studyMinutes * 60)
     setSessionCount(1)
     setIsBreak(false)
+    setIsFinished(false)
   }
 
   function applySettings() {
@@ -128,7 +133,17 @@ function Timer() {
       <div className="timer-card">
 
         <h1>StudyBuddy</h1>
-
+        <img
+          className="study-pet"
+          src={
+            isFinished
+              ? eatingPet
+              : isBreak
+              ? sleepingPet
+              : jumpingPet
+          }
+          alt="Study Bunny"
+        />
         <p>
           Session {sessionCount}/{totalSessions}
         </p>

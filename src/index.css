@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  background-color: #f8d7e3;
+  background-color: #F9CEEE;
 
   display: flex;
   justify-content: center;
@@ -17,21 +17,24 @@ body {
 }
 
 .timer-card {
-  background: white;
+  background: #FFF7D1 ;
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-
+  color: #A267AC;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  color: #8f5eae;
 }
 
 h2 {
   font-size: 48px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  color: #D77FA1;
 }
 
 .buttons {
@@ -45,6 +48,8 @@ button {
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
+  background-color: #D6E5FA;
+  color: #6B7AA1;
 }
 .settings-buttons {
   display: flex;
@@ -63,4 +68,9 @@ button {
 .settings-page p {
   margin-top: 20px;
   margin-bottom: 8px;
+}
+.study-pet {
+  width: 150px;
+  image-rendering: pixelated;
+  margin: 5px 0;
 }
