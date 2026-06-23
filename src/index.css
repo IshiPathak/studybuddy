@@ -74,3 +74,106 @@ button {
   image-rendering: pixelated;
   margin: 5px 0;
 }
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ai-page {
+  width: 95%;
+  max-width: 450px;
+
+  height: 85vh;
+
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chat-area {
+  flex: 1;
+
+  overflow-y: auto;
+
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 15px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  text-align: left;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+.input-area textarea {
+  width: 100%;
+
+  min-height: 80px;
+
+  resize: none;
+
+  padding: 12px;
+
+  border: 1px solid #d8cde0;
+  border-radius: 10px;
+
+  font-size: 16px;
+}
+
+.input-area button {
+  align-self: flex-end;
+
+  width: 100px;
+}
+
+/* User Bubble */
+
+.user-message {
+  width: fit-content;
+
+  max-width: 80%;
+
+  margin-left: auto;
+  margin-bottom: 15px;
+
+  padding: 12px;
+
+  border-radius: 15px 15px 0 15px;
+
+  background: #f6f1ff;
+}
+
+/* AI Bubble */
+
+.ai-message {
+  width: fit-content;
+
+  max-width: 80%;
+
+  margin-right: auto;
+  margin-bottom: 15px;
+
+  padding: 12px;
+
+  border-radius: 15px 15px 15px 0;
+
+  background: #fff8d8;
+}
