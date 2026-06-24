@@ -23,11 +23,27 @@ function App() {
           ⏰ Pomodoro
         </button>
       </div>
-      {
-        activeTab === "pomodoro"
-          ? <Timer />
-          : <AIPage />
-      }
+      <div
+        style={{
+          display:
+            activeTab === "ai"
+              ? "block"
+              : "none"
+        }}
+      >
+        <AIPage />
+      </div>
+
+      <div
+        style={{
+          display:
+            activeTab === "pomodoro"
+              ? "block"
+              : "none"
+        }}
+      >
+        <Timer />
+      </div>
     </div>
   )
 }
