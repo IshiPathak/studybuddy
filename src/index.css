@@ -177,3 +177,56 @@ button {
 
   background: #fff8d8;
 }
+.input-buttons {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.upload-btn {
+  cursor: pointer;
+
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  background: #f6f1ff;
+}
+.file-preview {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background: #f6f1ff;
+
+  margin-bottom: 10px;
+}
+
+.remove-file-btn {
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  font-weight: bold;
+}
+.file-name {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  max-width: 300px;
+}
