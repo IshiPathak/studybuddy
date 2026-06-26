@@ -138,10 +138,8 @@ button {
   font-size: 16px;
 }
 
-.input-area button {
+.input-area .action-btn {
   align-self: flex-end;
-
-  width: 100px;
 }
 
 /* User Bubble */
@@ -184,30 +182,18 @@ button {
 
   align-items: center;
 }
-
-.upload-btn {
-  cursor: pointer;
+.file-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   padding: 8px 12px;
 
+  margin-bottom: 10px;
+
   border-radius: 8px;
 
-  background: #f6f1ff;
-}
-.file-preview {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  padding: 10px;
-
-  border-radius: 10px;
-
-  background: #f6f1ff;
-
-  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .remove-file-btn {
@@ -228,5 +214,37 @@ button {
 
   white-space: nowrap;
 
-  max-width: 300px;
+  max-width: 220px;
+}
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 110px;
+  height: 42px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #D6E5FA;
+  color: #6B7AA1;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.action-btn:hover:not(:disabled) {
+  background-color: #c8dafb;
+}
+
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

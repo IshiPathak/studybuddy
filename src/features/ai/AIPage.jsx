@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
-import { askGemini } from "../../services/gemini"
+import { askAI } from "../../services/ai"
 import ReactMarkdown from "react-markdown"
-import {handleFileUpload} from "./utils/fileUtils"
+import {handleFileUpload} from "./fileUtils"
 
 function AIPage() {
 
@@ -38,7 +38,7 @@ function AIPage() {
 
         setLoading(true)
         const aiResponse =
-          await askGemini(
+          await askAI(
             [
               ...chat,
               {
@@ -82,7 +82,7 @@ function AIPage() {
     <div className="ai-page">
 
       <div className="ai-header">
-        <h1>📚 StudyBuddy AI</h1>
+        <h1>StudyBuddy AI</h1>
         <p>🐰 Ask me anything about your studies!</p>
       </div>
 
@@ -166,12 +166,12 @@ function AIPage() {
             }
 
           }}
-          placeholder="Ask anything..."
+          placeholder="Ask a question, paste notes, or upload a PDF/TXT..."
         />
 
         <div className="input-buttons">
 
-          <label className="upload-btn">
+          <label className="action-btn">
 
             📎 Upload
 
@@ -190,7 +190,7 @@ function AIPage() {
 
           </label>
 
-          <button onClick={handleSend}>
+          <button className="action-btn" onClick={handleSend}>
             Send
           </button>
 
