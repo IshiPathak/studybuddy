@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import { SYSTEM_PROMPT } from "./systemPrompt"
+import { parseAIResponse } from "./responseParser"
 
 const genAI = new GoogleGenerativeAI(
   import.meta.env.VITE_GEMINI_API_KEY
@@ -31,12 +32,14 @@ ${fileContent}
   const result = await model.generateContent(
     `${SYSTEM_PROMPT}
 
-${documentSection}
+  ${documentSection}
 
-Conversation:
+  Conversation:
 
-${conversation}`
+  ${conversation}`
   )
 
-  return result.response.text()
+  const response = result.response.text().trim()
+  console.log(response)
+  return parseAIResponse(response)
 }

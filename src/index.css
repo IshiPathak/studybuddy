@@ -248,3 +248,197 @@ button {
   opacity: 0.6;
   cursor: not-allowed;
 }
+.study-card {
+
+  background: #fff8d8;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+}
+
+.study-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+
+  color: #A267AC;
+}
+.flashcard {
+
+  min-height:240px;
+
+  padding:32px;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:22px;
+
+  font-weight:600;
+
+  margin: 20px 0;
+
+  border-radius: 12px;
+
+  background: white;
+
+  cursor: pointer;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  text-align: center;
+
+  transition: transform 0.2s ease;
+}
+
+.flashcard:hover {
+
+  transform: scale(1.02);
+
+}
+
+.flashcard h4 {
+
+  margin-bottom: 12px;
+
+  color: #A267AC;
+
+}
+
+.flashcard-buttons{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-top:18px;
+
+}
+
+.flashcard-buttons .action-btn{
+
+    width:120px;
+
+}
+
+.flashcard-count {
+
+  text-align: center;
+
+  color: #888;
+
+}
+.quiz-option {
+
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 12px 16px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  background: #D6E5FA;
+
+  color: #6B7AA1;
+
+  text-align: left;
+
+  font-size: 15px;
+
+  transition: background-color 0.2s ease;
+
+}
+
+.quiz-option:hover:not(:disabled) {
+
+  background: #c8dafb;
+
+}
+.quiz-option.selected {
+
+  background: #A267AC;
+
+  color: white;
+
+}
+
+.quiz-option.correct {
+
+  background: #b8f5c4;
+
+  color: #1c5d2d;
+
+}
+
+.quiz-option.wrong {
+
+  background: #ffd4d4;
+
+  color: #8a1f1f;
+
+}
+
+.quiz-answer {
+
+  margin-top: 18px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: white;
+
+}
+.quiz-buttons {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 20px;
+
+}
+
+.quiz-buttons .action-btn {
+
+  flex: 1;
+
+}
+
+.flashcard-hint {
+
+  margin-top: 24px;
+
+  font-size: 13px;
+
+  color: #888;
+
+  text-align: center;
+
+}
+.study-message {
+
+  width: 100%;
+
+  margin-bottom: 15px;
+
+  box-sizing: border-box;
+
+}

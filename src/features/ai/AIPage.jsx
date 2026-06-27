@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react"
 import { askAI } from "../../services/ai"
-import ReactMarkdown from "react-markdown"
-import {handleFileUpload} from "./fileUtils"
+import { handleFileUpload } from "./fileUtils"
+import AIMessage from "./components/AIMessage"
+import QuizViewer from "./components/QuizViewer"
 
 function AIPage() {
 
@@ -9,9 +10,9 @@ function AIPage() {
   const [chat, setChat] = useState([])
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState(null)
+  const [fileContent, setFileContent] = useState("")
   const chatEndRef = useRef(null)
-  const [fileContent, setFileContent] =
-  useState("")
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({
       behavior: "smooth"
@@ -25,58 +26,68 @@ function AIPage() {
     const userMessage = message
 
     setChat(prev => [
-        ...prev,
-        {
+      ...prev,
+      {
         sender: "user",
         text: userMessage
-        }
+      }
     ])
 
     setMessage("")
 
     try {
 
-        setLoading(true)
-        const aiResponse =
-          await askAI(
-            [
-              ...chat,
-              {
-                sender: "user",
-                text: userMessage
-              }
-            ],
-            fileContent
-          )
-        setChat(prev => [
+      setLoading(true)
+
+      const aiResponse = await askAI(
+        [
+          ...chat,
+          {
+            sender: "user",
+            text: userMessage
+          }
+        ],
+        fileContent
+      )
+
+      setChat(prev => [
         ...prev,
         {
-            sender: "ai",
-            text: aiResponse
+          sender: "ai",
+          ...aiResponse
         }
-        ])
-        setLoading(false)
+      ])
+
+      setLoading(false)
 
     } catch (error) {
-        setLoading(false)
-        let errorMessage = "❌ Something went wrong."
-        if (error.message.includes("503")) {
-          errorMessage =
-            "🐰 Gemini is busy right now. Please try again in a few seconds."
-        } else if (error.message.includes("429")) {
-          errorMessage =
-            "⚠️ API quota exceeded. Try again later."
-        }
-        setChat(prev => [
-          ...prev,
-          {
-            sender: "ai",
-            text: errorMessage
-          }
-        ])
-        console.error(error)
+
+      setLoading(false)
+
+      let errorMessage = "❌ Something went wrong."
+
+      if (error.message.includes("503")) {
+        errorMessage =
+          "🐰 Gemini is busy right now. Please try again in a few seconds."
+      } else if (error.message.includes("429")) {
+        errorMessage =
+          "⚠️ API quota exceeded. Try again later."
       }
+
+      setChat(prev => [
+        ...prev,
+        {
+          sender: "ai",
+          type: "markdown",
+          content: errorMessage
+        }
+      ])
+
+      console.error(error)
+
     }
+
+  }
 
   return (
     <div className="ai-page">
@@ -95,19 +106,13 @@ function AIPage() {
             className={
               msg.sender === "user"
                 ? "user-message"
-                : "ai-message"
+                : msg.type === "markdown"
+                ? "ai-message"
+                : "study-message"
             }
           >
 
-            <strong>
-              {msg.sender === "user"
-                ? "You"
-                : "StudyBuddy"}
-            </strong>
-
-            <ReactMarkdown>
-              {msg.text}
-            </ReactMarkdown>
+            <AIMessage msg={msg} />
 
           </div>
 
@@ -118,7 +123,9 @@ function AIPage() {
             🐰 Thinking...
           </div>
         )}
+
         <div ref={chatEndRef}></div>
+
       </div>
 
       <div className="input-area">
@@ -163,6 +170,7 @@ function AIPage() {
               e.preventDefault()
 
               handleSend()
+
             }
 
           }}
@@ -190,7 +198,10 @@ function AIPage() {
 
           </label>
 
-          <button className="action-btn" onClick={handleSend}>
+          <button
+            className="action-btn"
+            onClick={handleSend}
+          >
             Send
           </button>
 
