@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown"
 import SummaryCard from "./SummaryCard"
 import FlashcardViewer from "./FlashcardViewer"
 import QuizViewer from "./QuizViewer"
+import NotesViewer from "./NotesViewer"
 
 function AIMessage({ msg }) {
 
@@ -30,6 +31,15 @@ function AIMessage({ msg }) {
         />
         )
 
+    case "notes":
+
+        return (
+        <NotesViewer
+            title={msg.title}
+            sections={msg.sections}
+        />
+        )
+
     case "flashcards":
 
         return (
@@ -38,16 +48,16 @@ function AIMessage({ msg }) {
             cards={msg.cards}
         />
         )
+
     case "quiz":
 
         return (
-
-            <QuizViewer
+        <QuizViewer
             title={msg.title}
             questions={msg.questions}
-            />
-
+        />
         )
+
     default:
 
         return (
