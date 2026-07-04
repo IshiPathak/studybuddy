@@ -12,7 +12,8 @@ const model = genAI.getGenerativeModel({
 
 export async function askAI(
   chatHistory,
-  fileContent = ""
+  fileContent = "",
+  webpageContent = ""
 ) {
 
   const conversation = chatHistory
@@ -29,17 +30,27 @@ ${fileContent}
 `
     : ""
 
+const webpageSection = webpageContent
+  ? `
+The following webpage has ALREADY been fetched for you.
+
+Use ONLY this content when answering questions about the webpage.
+
+${webpageContent}
+`
+  : ""
   const result = await model.generateContent(
-    `${SYSTEM_PROMPT}
+  `${SYSTEM_PROMPT}
 
-  ${documentSection}
+    ${documentSection}
 
-  Conversation:
+    ${webpageSection}
 
-  ${conversation}`
-  )
+    Conversation:
+
+    ${conversation}`
+    )
 
   const response = result.response.text().trim()
-  console.log(response)
   return parseAIResponse(response)
 }

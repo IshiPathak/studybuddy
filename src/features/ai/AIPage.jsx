@@ -3,6 +3,8 @@ import { askAI } from "../../services/ai"
 import { handleFileUpload } from "./fileUtils"
 import AIMessage from "./components/AIMessage"
 import QuizViewer from "./components/QuizViewer"
+import { extractURL } from "./urlUtils"
+import { fetchWebpage } from "../../services/urlService"
 
 function AIPage() {
 
@@ -24,6 +26,34 @@ function AIPage() {
     if (!message.trim()) return
 
     const userMessage = message
+    let webpageContent = ""
+
+    const url = extractURL(userMessage)
+
+    if (url) {
+
+      try {
+
+        webpageContent = await fetchWebpage(url)
+        console.log("WEBPAGE CONTENT:")
+console.log(webpageContent.substring(0, 300))
+
+      } catch {
+
+        setChat(prev => [
+          ...prev,
+          {
+            sender: "ai",
+            type: "markdown",
+            content: "❌ Couldn't read that webpage."
+          }
+        ])
+
+        return
+
+      }
+
+    }
 
     setChat(prev => [
       ...prev,
@@ -47,7 +77,8 @@ function AIPage() {
             text: userMessage
           }
         ],
-        fileContent
+        fileContent,
+        webpageContent
       )
 
       setChat(prev => [
