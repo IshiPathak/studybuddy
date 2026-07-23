@@ -1,15 +1,30 @@
-import { useState } from "react"
-import StudyCard from "./StudyCard"
+import { useState } from "react";
+import StudyCard from "./StudyCard";
+import DownloadButtons from "./DownloadButtons";
 
 function FlashcardViewer({
   title,
   cards
 }) {
 
-  const [current, setCurrent] = useState(0)
-  const [showAnswer, setShowAnswer] = useState(false)
+  const flashcardText = `${title}
 
-  const card = cards[current]
+${cards
+  .map(
+    (card, index) => `Flashcard ${index + 1}
+
+Question:
+${card.question}
+
+Answer:
+${card.answer}`
+  )
+  .join("\n\n--------------------------\n\n")}`;
+
+  const [current, setCurrent] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
+
+  const card = cards[current];
 
   return (
     <StudyCard>
@@ -22,9 +37,7 @@ function FlashcardViewer({
 
       <div
         className="flashcard"
-        onClick={() =>
-          setShowAnswer(!showAnswer)
-        }
+        onClick={() => setShowAnswer(!showAnswer)}
       >
 
         {showAnswer ? (
@@ -47,8 +60,8 @@ function FlashcardViewer({
           className="action-btn"
           disabled={current === 0}
           onClick={() => {
-            setCurrent(current - 1)
-            setShowAnswer(false)
+            setCurrent(current - 1);
+            setShowAnswer(false);
           }}
         >
           ← Previous
@@ -58,8 +71,8 @@ function FlashcardViewer({
           className="action-btn"
           disabled={current === cards.length - 1}
           onClick={() => {
-            setCurrent(current + 1)
-            setShowAnswer(false)
+            setCurrent(current + 1);
+            setShowAnswer(false);
           }}
         >
           Next →
@@ -67,9 +80,13 @@ function FlashcardViewer({
 
       </div>
 
-    </StudyCard>
-  )
+      <DownloadButtons
+        title={title}
+        content={flashcardText}
+      />
 
+    </StudyCard>
+  );
 }
 
-export default FlashcardViewer
+export default FlashcardViewer;

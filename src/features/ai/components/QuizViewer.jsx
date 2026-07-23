@@ -1,5 +1,6 @@
 import { useState } from "react"
 import StudyCard from "./StudyCard"
+import DownloadButtons from "./DownloadButtons";
 
 function QuizViewer({
   title,
@@ -124,6 +125,29 @@ function QuizViewer({
         </button>
 
       </div>
+      <DownloadButtons
+  title={title}
+  content={`${title}
+
+${questions
+  .map(
+    (q, index) => `Question ${index + 1}
+
+${q.question}
+
+Options:
+${q.options
+  .map((option, i) => `${String.fromCharCode(65 + i)}. ${option}`)
+  .join("\n")}
+
+Correct Answer:
+${q.options[q.answer]}
+
+Explanation:
+${q.explanation}`
+  )
+  .join("\n\n=========================\n\n")}`}
+/>
 
     </StudyCard>
 

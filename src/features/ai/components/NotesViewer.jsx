@@ -1,9 +1,19 @@
 import StudyCard from "./StudyCard"
+import DownloadButtons from "./DownloadButtons"
 
 function NotesViewer({
   title,
   sections
 }) {
+      const notesText = `${title}
+
+    ${sections
+      .map(
+        section => `${section.heading}
+
+    ${section.points.map(point => `• ${point}`).join("\n")}`
+      )
+      .join("\n\n")}`;
 
   return (
 
@@ -42,6 +52,10 @@ function NotesViewer({
         </div>
 
       ))}
+            <DownloadButtons
+        title={title}
+        content={notesText}
+      />
 
     </StudyCard>
 

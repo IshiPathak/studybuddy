@@ -1,5 +1,6 @@
 import StudyCard from "./StudyCard"
 import ReactMarkdown from "react-markdown"
+import DownloadButtons from "./DownloadButtons"
 function SummaryCard({
   title,
   content
@@ -15,6 +16,10 @@ function SummaryCard({
       <ReactMarkdown>
         {content}
       </ReactMarkdown>
+      <DownloadButtons
+        title={title}
+        content={content}
+      />
 
     </StudyCard>
   )

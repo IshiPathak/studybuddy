@@ -14,11 +14,16 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@mozilla/readability": "^0.6.0",
+    "docx": "^9.7.1",
+    "file-saver": "^2.0.5",
     "jsdom": "^29.1.1",
+    "jspdf": "^4.2.1",
     "pdfjs-dist": "^6.0.227",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-markdown": "^10.1.0"
+    "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
+    "remove-markdown": "^0.6.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
