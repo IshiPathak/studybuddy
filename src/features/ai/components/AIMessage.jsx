@@ -1,77 +1,86 @@
-import ReactMarkdown from "react-markdown"
-import SummaryCard from "./SummaryCard"
-import FlashcardViewer from "./FlashcardViewer"
-import QuizViewer from "./QuizViewer"
-import NotesViewer from "./NotesViewer"
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+import SummaryCard from "./SummaryCard";
+import FlashcardViewer from "./FlashcardViewer";
+import QuizViewer from "./QuizViewer";
+import NotesViewer from "./NotesViewer";
 
 function AIMessage({ msg }) {
+  const markdownComponents = {
+    a: ({ href, children }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    ),
+  };
 
   if (msg.sender === "user") {
-
     return (
       <>
         <strong>You</strong>
 
-        <ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={markdownComponents}
+        >
           {msg.text}
         </ReactMarkdown>
       </>
-    )
-
+    );
   }
 
   switch (msg.type) {
-
     case "summary":
-
-        return (
+      return (
         <SummaryCard
-            title={msg.title}
-            content={msg.content}
+          title={msg.title}
+          content={msg.content}
         />
-        )
+      );
 
     case "notes":
-
-        return (
+      return (
         <NotesViewer
-            title={msg.title}
-            sections={msg.sections}
+          title={msg.title}
+          sections={msg.sections}
         />
-        )
+      );
 
     case "flashcards":
-
-        return (
+      return (
         <FlashcardViewer
-            title={msg.title}
-            cards={msg.cards}
+          title={msg.title}
+          cards={msg.cards}
         />
-        )
+      );
 
     case "quiz":
-
-        return (
+      return (
         <QuizViewer
-            title={msg.title}
-            questions={msg.questions}
+          title={msg.title}
+          questions={msg.questions}
         />
-        )
+      );
 
     default:
-
-        return (
+      return (
         <>
-            <strong>StudyBuddy</strong>
+          <strong>StudyBuddy</strong>
 
-            <ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={markdownComponents}
+          >
             {msg.content}
-            </ReactMarkdown>
+          </ReactMarkdown>
         </>
-        )
-
-    }
-
+      );
+  }
 }
 
-export default AIMessage
+export default AIMessage;
