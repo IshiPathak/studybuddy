@@ -1,66 +1,53 @@
-# StudyBuddy 🌸📚
+# 🌸 StudyBuddy
 
-A cozy pixel-themed AI study companion built with React.
+A cozy pixel-themed AI study companion built with **React** to make studying more organized, interactive, and enjoyable.
 
-StudyBuddy combines productivity tools, AI-powered studying, and cute pixel aesthetics to make studying feel less stressful and more enjoyable.
+StudyBuddy combines AI-powered study tools, productivity features, and a calming pixel aesthetic so you can focus without juggling multiple tabs.
 
 ---
 
 ## ✨ Features
 
 ### ⏳ Productivity
+- 🍅 Pomodoro study timer
+- 🎵 Study & break completion sounds
+- 🩷 Cozy pixel-inspired interface
 
-* Pomodoro study timer 
-* Study & break completion sounds
-* Cozy pixel-inspired UI
-* Future animated study pet companion
+### 🤖 AI Study Assistant
+Generate study material from:
+- 📄 PDF files
+- 📝 Text or notes
+- 🌐 Website links
 
----
+AI-powered tools:
+- 📝 Smart summaries
+- 📖 Organized study notes
+- 📚 Flashcards
+- ❓ Quiz generation
+- 💡 Simple explanations
+- 📋 Copy to clipboard
+- 📄 Export as TXT
+- 📕 Export as PDF
+- 🔗 Clickable learning resources
 
-### 🤖 AI Study Tools
-
-Generate study material instantly from:
-
-* Website links
-* PDFs
-* Notes
-* Text content
-* Articles
-
-AI-powered features include:
-
-* 📝 Smart summaries
-* 📚 Flashcards
-* ❓ Quiz generation
-* 📖 AI notes
-* 🎯 Key point extraction
-* 💡 Simplified explanations
-
----
-
-## 🎨 Aesthetic Theme
-
-StudyBuddy is inspired by cozy pixel-style games and calming study vibes.
-
-Features:
-
-* pastel pixel UI
-* retro-inspired design
-* cozy study atmosphere
-* cute companion system
+### 🎨 Aesthetic UI
+- 🌸 Cozy pastel pixel theme
+- 🐰 Cute study-inspired design
+- 💻 Clean and distraction-free workspace
 
 ---
 
-## 🛠️ Built With
+## 🛠️ Tech Stack
 
-* React
-* Vite
-* JavaScript
-* HTML + CSS
+- React
+- Vite
+- JavaScript
+- HTML & CSS
+- Groq API (Llama 3.3 70B)
 
 ---
 
-## 🚀 Running Locally
+## 🚀 Getting Started
 
 Clone the repository:
 
@@ -68,7 +55,7 @@ Clone the repository:
 git clone YOUR_REPO_LINK
 ```
 
-Go into the project folder:
+Navigate into the project:
 
 ```bash
 cd studybuddy
@@ -80,7 +67,13 @@ Install dependencies:
 npm install
 ```
 
-Run the development server:
+Create a `.env` file:
+
+```env
+VITE_GROQ_API_KEY=your_api_key
+```
+
+Start the development server:
 
 ```bash
 npm run dev
@@ -88,35 +81,34 @@ npm run dev
 
 ---
 
-## 📌 Current Status
+## 📌 Current Features
 
-🚧 Currently in development.
-
-Phase 1 focuses on:
-
-* Pomodoro timer
-* Pixel UI
-* Sound effects
-* React setup
-* Chrome extension foundation
+- ✅ Pomodoro Timer
+- ✅ AI Chat Assistant
+- ✅ PDF Upload
+- ✅ TXT Upload
+- ✅ Website Reader
+- ✅ AI Summaries
+- ✅ Study Notes
+- ✅ Flashcards
+- ✅ Quiz Generator
+- ✅ Copy / TXT / PDF Export
+- ✅ Markdown & Clickable Links
 
 ---
 
 ## 🌱 Future Plans
 
-* Chrome extension release
-* AI chat study assistant
-* Animated pixel pet
-* Study streak system
-* Focus music & ambience
-* Theme customization
-* User accounts & sync
-* Gamified productivity system
+- 🌐 Chrome Extension
+- 🐰 Animated Study Pet
+- 🔥 Study Streaks
+- 🎵 Focus Music & Ambience
+- 🎨 Theme Customization
+- 👤 User Accounts & Sync
+- 🏆 Gamified Productivity
 
 ---
 
 ## 💖 Why I Built This
 
-I wanted to create a study tool that feels comforting, aesthetic, and motivating instead of stressful or boring, also has everything I normally need while I sit to study at one place instead of having multiple tabs open up on my 13 inch macbook screen.
-
-StudyBuddy is designed to feel like a tiny cozy study companion while helping users stay productive and learn more effectively.
+I wanted one place for everything I use while studying instead of constantly switching between different websites and tabs. StudyBuddy combines AI-powered learning tools with productivity features in a cozy pixel-themed interface, making studying feel more organized, enjoyable, and a little less overwhelming.
