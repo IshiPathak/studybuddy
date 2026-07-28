@@ -1,52 +1,36 @@
 export function parseAIResponse(response) {
+  let cleaned = response
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
+
+  // If it doesn't look like JSON, treat it as markdown immediately
+  if (!cleaned.startsWith("{")) {
+    return {
+      type: "markdown",
+      content: cleaned,
+    };
+  }
 
   try {
-
-    let cleaned = response.trim()
-
-    const start = cleaned.indexOf("{")
-    const end = cleaned.lastIndexOf("}")
-
-    if (start !== -1 && end !== -1) {
-      cleaned = cleaned.substring(start, end + 1)
-    }
-
-    cleaned = cleaned
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim()
-
-    const parsed = JSON.parse(cleaned)
+    const parsed = JSON.parse(cleaned);
 
     switch (parsed.type) {
-
       case "summary":
       case "flashcards":
       case "quiz":
       case "notes":
-      case "markdown":
-        return parsed
+        return parsed;
 
       default:
-        throw new Error("Unknown response type")
-
+        throw new Error("Unknown response type");
     }
-
   } catch (error) {
-
-    console.error(
-      "Failed to parse AI response:",
-      error
-    )
+    console.error("Invalid JSON:", error);
 
     return {
-
       type: "markdown",
-
-      content: response
-
-    }
-
+      content: cleaned,
+    };
   }
-
 }

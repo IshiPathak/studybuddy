@@ -1,1 +1,0 @@
-console.log("StudyBuddy content script loaded");

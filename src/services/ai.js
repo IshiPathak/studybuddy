@@ -10,29 +10,47 @@ const groq = new Groq({
 export async function askAI(
   chatHistory,
   fileContent = "",
-  webpageContent = ""
+  webpageContent = "",
+  currentPage = ""
 ) {
   const conversation = chatHistory
     .map(msg => `${msg.sender}: ${msg.text}`)
     .join("\n");
 
-const documentSection = fileContent
-  ? `
+  const documentSection = fileContent
+    ? `
 Document:
 
 ${fileContent}
 `
-  : "";
+    : "";
 
   const webpageSection = webpageContent
-  ? `
+    ? `
 The following webpage has ALREADY been fetched for you.
 
 Use ONLY this content when answering questions about the webpage.
 
 ${webpageContent}
 `
+    : "";
+
+const currentPageSection = currentPage
+  ? `
+The user is currently viewing this webpage.
+
+Title:
+${currentPage.title}
+
+URL:
+${currentPage.url}
+
+Content:
+
+${currentPage.content}
+`
   : "";
+console.log(currentPageSection);
 
   const completion = await groq.chat.completions.create({
     model: "llama-3.3-70b-versatile",
@@ -48,6 +66,8 @@ ${webpageContent}
 ${documentSection}
 
 ${webpageSection}
+
+${currentPageSection}
 
 Conversation:
 

@@ -5,6 +5,7 @@ import AIMessage from "./components/AIMessage"
 import QuizViewer from "./components/QuizViewer"
 import { extractURL } from "./urlUtils"
 import { fetchWebpage } from "../../services/urlService"
+import { getCurrentPage } from "../../services/pageReader";
 
 function AIPage() {
 
@@ -26,6 +27,13 @@ function AIPage() {
     if (!message.trim()) return
 
     const userMessage = message
+    const page = await getCurrentPage();
+      console.log("Current page:", page);
+
+      let currentPage = null;
+      if (page) {
+        currentPage = page;
+      }
     let webpageContent = ""
 
     const url = extractURL(userMessage)
@@ -70,16 +78,11 @@ console.log(webpageContent.substring(0, 300))
       setLoading(true)
 
       const aiResponse = await askAI(
-        [
-          ...chat,
-          {
-            sender: "user",
-            text: userMessage
-          }
-        ],
+        [...chat, { sender: "user", text: userMessage }],
         fileContent,
-        webpageContent
-      )
+        webpageContent,
+        currentPage
+      );
 
       setChat(prev => [
         ...prev,
