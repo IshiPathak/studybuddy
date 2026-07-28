@@ -3,6 +3,7 @@ import studyDone from "../../assets/studyDone.mp3"
 import breakDone from "../../assets/breakDone.mp3"
 import TimerControls from "./TimerControls"
 import CustomTimer from "./CustomTimer"
+import standPet from "../../assets/stand.png"
 import jumpingPet from "../../assets/jump.gif"
 import sleepingPet from "../../assets/sleep.gif"
 import eatingPet from "../../assets/eat.gif"
@@ -138,6 +139,8 @@ function Timer() {
           src={
             isFinished
               ? eatingPet
+              : !isRunning
+              ? standPet
               : isBreak
               ? sleepingPet
               : jumpingPet
