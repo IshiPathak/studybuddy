@@ -1,39 +1,50 @@
 # 🌸 StudyBuddy
 
-A cozy pixel-themed AI study companion built with **React** to make studying more organized, interactive, and enjoyable.
+A cozy pixel-themed AI study companion built as a **Chrome Extension** to make studying more organized, interactive, and enjoyable.
 
-StudyBuddy combines AI-powered study tools, productivity features, and a calming pixel aesthetic so you can focus without juggling multiple tabs.
+StudyBuddy combines AI-powered learning tools, webpage analysis, document support, and productivity features in one place, so you can focus on learning without constantly switching between tabs.
 
 ---
 
 ## ✨ Features
 
-### ⏳ Productivity
-- 🍅 Pomodoro study timer
-- 🎵 Study & break completion sounds
-- 🩷 Cozy pixel-inspired interface
-
 ### 🤖 AI Study Assistant
+
 Generate study material from:
+
 - 📄 PDF files
 - 📝 Text or notes
-- 🌐 Website links
+- 🌐 Website URLs
+- 📖 The webpage you're currently viewing
 
-AI-powered tools:
-- 📝 Smart summaries
-- 📖 Organized study notes
+AI-powered tools include:
+
+- 📝 Smart Summaries
+- 📖 Study Notes
 - 📚 Flashcards
-- ❓ Quiz generation
-- 💡 Simple explanations
-- 📋 Copy to clipboard
+- ❓ Quiz Generation
+- 💡 Concept Explanations
+- 🌐 Current Webpage Analysis
+- 📋 Copy to Clipboard
 - 📄 Export as TXT
 - 📕 Export as PDF
-- 🔗 Clickable learning resources
+- 🔗 Clickable Learning Resources
 
-### 🎨 Aesthetic UI
+---
+
+### ⏳ Productivity
+
+- 🍅 Pomodoro Study Timer
+- 🎵 Study & Break Completion Sounds
+- 💻 Clean, distraction-free workspace
+
+---
+
+### 🎨 UI
+
 - 🌸 Cozy pastel pixel theme
-- 🐰 Cute study-inspired design
-- 💻 Clean and distraction-free workspace
+- 🐰 Cute study-inspired interface
+- ✨ Simple and minimal design
 
 ---
 
@@ -43,72 +54,84 @@ AI-powered tools:
 - Vite
 - JavaScript
 - HTML & CSS
+- Chrome Extensions API
 - Groq API (Llama 3.3 70B)
 
 ---
 
 ## 🚀 Getting Started
 
-Clone the repository:
+Clone the repository
 
 ```bash
-git clone YOUR_REPO_LINK
+git clone https://github.com/YOUR_USERNAME/studybuddy.git
 ```
 
-Navigate into the project:
+Navigate into the project
 
 ```bash
 cd studybuddy
 ```
 
-Install dependencies:
+Install dependencies
 
 ```bash
 npm install
 ```
 
-Create a `.env` file:
+Create a `.env` file
 
 ```env
 VITE_GROQ_API_KEY=your_api_key
 ```
 
-Start the development server:
+Start the development server
 
 ```bash
 npm run dev
 ```
 
+Build the extension
+
+```bash
+npm run build
+```
+
+Then open **chrome://extensions**, enable **Developer Mode**, click **Load unpacked**, and select the generated **dist** folder.
+
 ---
 
 ## 📌 Current Features
 
-- ✅ Pomodoro Timer
 - ✅ AI Chat Assistant
+- ✅ Current Webpage Reader
+- ✅ Website URL Reader
 - ✅ PDF Upload
 - ✅ TXT Upload
-- ✅ Website Reader
-- ✅ AI Summaries
+- ✅ Smart Summaries
 - ✅ Study Notes
 - ✅ Flashcards
 - ✅ Quiz Generator
+- ✅ Markdown Rendering
+- ✅ Clickable Learning Resources
 - ✅ Copy / TXT / PDF Export
-- ✅ Markdown & Clickable Links
+- ✅ Pomodoro Timer
 
 ---
 
 ## 🌱 Future Plans
 
-- 🌐 Chrome Extension
 - 🐰 Animated Study Pet
 - 🔥 Study Streaks
-- 🎵 Focus Music & Ambience
+- 🎵 Focus Music & Ambient Sounds
 - 🎨 Theme Customization
-- 👤 User Accounts & Sync
+- ☁️ User Accounts & Sync
 - 🏆 Gamified Productivity
 
 ---
 
 ## 💖 Why I Built This
 
-I wanted one place for everything I use while studying instead of constantly switching between different websites and tabs. StudyBuddy combines AI-powered learning tools with productivity features in a cozy pixel-themed interface, making studying feel more organized, enjoyable, and a little less overwhelming.
+I wanted one place for everything I use while studying instead of constantly switching between different websites and tabs.
+
+StudyBuddy brings together AI-powered learning tools, document support, webpage analysis, and a built-in Pomodoro timer inside a cozy Chrome extension, making studying more organized, interactive, and enjoyable.
