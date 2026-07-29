@@ -10,29 +10,59 @@ const groq = new Groq({
 export async function askAI(
   chatHistory,
   fileContent = "",
-  webpageContent = ""
+  webpageContent = "",
+  currentPage = null
 ) {
   const conversation = chatHistory
     .map(msg => `${msg.sender}: ${msg.text}`)
     .join("\n");
 
-const documentSection = fileContent
-  ? `
-Document:
+  // Decide which context to send
+  let contextSection = "";
+
+  if (fileContent) {
+    contextSection = `
+The user uploaded a document.
+
+IMPORTANT:
+- Use ONLY this uploaded document when answering questions about the content.
+- Ignore any webpage unless the user explicitly asks to compare them.
+
+Uploaded document:
 
 ${fileContent}
-`
-  : "";
+`;
+  } else if (webpageContent) {
+    contextSection = `
+The following webpage has already been fetched.
 
-  const webpageSection = webpageContent
-  ? `
-The following webpage has ALREADY been fetched for you.
+IMPORTANT:
+- Use ONLY this webpage when answering.
+- Do not use the current browser tab.
 
-Use ONLY this content when answering questions about the webpage.
+Webpage:
 
 ${webpageContent}
-`
-  : "";
+`;
+  } else if (currentPage) {
+    contextSection = `
+The user is currently viewing this webpage.
+
+Title:
+${currentPage.title}
+
+URL:
+${currentPage.url}
+
+Content:
+
+${currentPage.content}
+`;
+  }
+
+  console.log("========== CONTEXT SENT TO GROQ ==========");
+  console.log(contextSection.substring(0, 500));
+  console.log("==========================================");
 
   const completion = await groq.chat.completions.create({
     model: "llama-3.3-70b-versatile",
@@ -45,9 +75,7 @@ ${webpageContent}
       {
         role: "user",
         content: `
-${documentSection}
-
-${webpageSection}
+${contextSection}
 
 Conversation:
 
