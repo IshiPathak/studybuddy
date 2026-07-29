@@ -131,7 +131,7 @@ function Timer() {
   return (
     <div className="container">
 
-      <div className="timer-card">
+      <div className="timer-card pomodoro-card">
 
         <h1>StudyBuddy</h1>
         <img

@@ -30,7 +30,7 @@ export default defineManifest({
     "tabs",
     "scripting",
     "sidePanel"
-    ],
+  ],
 
   host_permissions: [
     "<all_urls>"

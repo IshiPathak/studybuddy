@@ -11,7 +11,7 @@ function CustomTimer({
   return (
     <div className="settings-page container">
 
-      <div className="timer-card">
+      <div className="timer-card pomodoro-card">
 
         <h1>⚙️ Custom Timer</h1>
 

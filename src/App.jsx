@@ -6,9 +6,10 @@ function App() {
 
   const [activeTab, setActiveTab] = useState("ai")
   return (
-    <div>
+    <div className="app-layout">
       <div className="top-nav">
         <button
+          className={`nav-tab ${activeTab === "ai" ? "active" : ""}`}
           onClick={() =>
             setActiveTab("ai")
           }
@@ -16,6 +17,7 @@ function App() {
           📚 AI
         </button>
         <button
+          className={`nav-tab ${activeTab === "pomodoro" ? "active" : ""}`}
           onClick={() =>
             setActiveTab("pomodoro")
           }
@@ -24,6 +26,7 @@ function App() {
         </button>
       </div>
       <div
+        className="tab-page"
         style={{
           display:
             activeTab === "ai"
@@ -35,6 +38,7 @@ function App() {
       </div>
 
       <div
+        className="tab-page"
         style={{
           display:
             activeTab === "pomodoro"
