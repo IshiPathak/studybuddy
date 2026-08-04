@@ -29,10 +29,12 @@ function AIPage() {
     const userMessage = message
     let currentPage = null;
 
-    // Only read the current webpage if no uploaded file exists
     if (!fileContent) {
-      currentPage = await getCurrentPage();
-      console.log("Current page:", currentPage);
+      try {
+        currentPage = await getCurrentPage();
+      } catch (err) {
+        console.warn("Couldn't read current page:", err);
+      }
     }
     let webpageContent = ""
 
@@ -102,7 +104,7 @@ console.log(webpageContent.substring(0, 300))
 
       if (error.message.includes("503")) {
         errorMessage =
-          "🐰 Gemini is busy right now. Please try again in a few seconds."
+          "🐰 GROQ is busy right now. Please try again in a few seconds."
       } else if (error.message.includes("429")) {
         errorMessage =
           "⚠️ API quota exceeded. Try again later."
@@ -127,7 +129,10 @@ console.log(webpageContent.substring(0, 300))
     <div className="container">
       <div className="timer-card ai-card">
         <div className="ai-header">
-          <h1>StudyBuddy AI</h1>
+          <h1 className="logo">
+            <span className="logo-main">StudyBuddy</span>
+            <span className="logo-sub">AI</span>
+          </h1>
           <p>🐰 Ask me anything about your studies!</p>
         </div>
 

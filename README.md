@@ -82,10 +82,16 @@ Install dependencies
 npm install
 ```
 
-Create a `.env` file
+Create a `server/.env` file (API key stays on the backend — never in the browser)
 
 ```env
-VITE_GROQ_API_KEY=your_api_key
+GROQ_API_KEY=your_groq_api_key
+```
+
+Create a `.env.local` file in the project root (points the extension at the backend)
+
+```env
+VITE_API_URL=http://localhost:3000
 ```
 
 Run the development server

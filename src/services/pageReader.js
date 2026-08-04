@@ -1,4 +1,13 @@
 export async function getCurrentPage() {
+  // Running outside a Chrome extension (e.g. localhost)
+  if (
+    typeof chrome === "undefined" ||
+    !chrome.tabs ||
+    !chrome.scripting
+  ) {
+    return null;
+  }
+
   const [tab] = await chrome.tabs.query({
     active: true,
     currentWindow: true,

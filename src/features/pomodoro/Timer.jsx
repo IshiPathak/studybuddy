@@ -133,7 +133,9 @@ function Timer() {
 
       <div className="timer-card pomodoro-card">
 
-        <h1>StudyBuddy</h1>
+        <h1 className="pixel-heading">
+          StuddyBuddy
+        </h1>
         <img
           className="study-pet"
           src={
@@ -155,7 +157,9 @@ function Timer() {
           {isBreak ? "Break Time ☕" : "Focus Time 📚"}
         </h3>
 
-        <h2>{formatTime()}</h2>
+        <h2 className="timer-display">
+          {formatTime()}
+        </h2>
 
         <TimerControls
           handleStart={handleStart}

@@ -13,7 +13,9 @@ function CustomTimer({
 
       <div className="timer-card pomodoro-card">
 
-        <h1>⚙️ Custom Timer</h1>
+        <h1 className="playfair-heading">
+          Custom Timer
+        </h1>
 
         <div>
 
