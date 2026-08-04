@@ -1,6 +1,6 @@
 import { parseAIResponse } from "./responseParser";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "https://studybuddy-api-h7s7.onrender.com";
 
 export async function askAI(
   chatHistory,

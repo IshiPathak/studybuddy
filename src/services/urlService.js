@@ -1,7 +1,7 @@
 export async function fetchWebpage(url) {
 
   const response = await fetch(
-    "http://localhost:3000/api/webpage",
+    "https://studybuddy-api-h7s7.onrender.com",
     {
       method: "POST",
 
